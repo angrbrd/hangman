@@ -10,27 +10,39 @@
   </head>
 
   <body>
-    <h1>List of Cat Breeds</h1>
+    <h1>Welcome to Kitty Hangman!</h1>
     <hr>
-    <h2>Breeds:</h2>
+    <h2>Selected Breed:</h2>
 
-    <ul id="catBreeds"></ul>
+    <div id="catBreeds"></div>
 
     <script type="text/javascript">
+      // Define a function that randomly selects an integer between 
+      // a given min and max
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
       // Specify the file containing the cat breeds
       var catBreedFile = "./assets/cat_breeds.txt";
       console.log("catBreedFile: " + catBreedFile);
 
       // Read in the contents of the file using jQuery
       $.get(catBreedFile, function(data) {
-        // Parse the data string into an array of stings
+        // Parse the data into an array of stings
         var breedsArray = data.split("\n");
+        var breedsNum = breedsArray.length;
+        console.log("Total Number of breeds is: " + breedsNum);
 
-        // Display the file contents in HTML
-        var catBreeds = $("#catBreeds");
-        for (var i = 0; i < breedsArray.length; i++) {
-          catBreeds.append($("<li>").html(breedsArray[i]));
-        }
+        // Select a breed at random
+        var randomNum = getRandomIntInclusive(0, breedsNum-1);
+        var randomBreed = breedsArray[randomNum];
+        console.log("Breed Selected is: " + randomBreed);
+
+        // Display the randomly selected breed in HTML
+        $("#catBreeds").html(randomBreed);
       }, 'text');
     </script>
 
