@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Kitty Hangman</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <h1>List of Cat Breeds</h1>
+    <hr>
+    <h2>Breeds:</h2>
+
+    <ul id="catBreeds"></ul>
+
+    <script type="text/javascript">
+      // Specify the file containing the cat breeds
+      var catBreedFile = "./assets/cat_breeds.txt";
+      console.log("catBreedFile: " + catBreedFile);
+
+      // Read in the contents of the file using jQuery
+      $.get(catBreedFile, function(data) {
+        // Parse the data string into an array of stings
+        var breedsArray = data.split("\n");
+
+        // Display the file contents in HTML
+        var catBreeds = $("#catBreeds");
+        for (var i = 0; i < breedsArray.length; i++) {
+          catBreeds.append($("<li>").html(breedsArray[i]));
+        }
+      }, 'text');
+    </script>
+
+  </body>
+</html>
