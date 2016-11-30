@@ -1,50 +1,25 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Kitty Hangman</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Kitty Hangman</title>
 
-    <!-- Added link to the jQuery Library -->
-    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-  </head>
+  <!-- Added link to the jQuery Library -->
+  <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+</head>
 
-  <body>
-    <h1>Welcome to Kitty Hangman!</h1>
-    <hr>
-    <h2>Selected Breed:</h2>
+<body>
+  <h1>Welcome to Kitty Hangman!</h1>
+  <hr>
 
-    <div id="catBreeds"></div>
+  <h2>Your Guess</h2>
+  <div id="userGuess"></div>
 
-    <script type="text/javascript">
-      // Define a function that randomly selects an integer between 
-      // a given min and max
-      function getRandomIntInclusive(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
+  <h3>Number Of Tries Remaining: </h3>
+  <div id="triesLeft"></div>
+  <h3>Letters Already Guessed: </h3>
+  <div id="lettersGuessed"></div>
 
-      // Specify the file containing the cat breeds
-      var catBreedFile = "./assets/cat_breeds.txt";
-      console.log("catBreedFile: " + catBreedFile);
-
-      // Read in the contents of the file using jQuery
-      $.get(catBreedFile, function(data) {
-        // Parse the data into an array of stings
-        var breedsArray = data.split("\n");
-        var breedsNum = breedsArray.length;
-        console.log("Total Number of breeds is: " + breedsNum);
-
-        // Select a breed at random
-        var randomNum = getRandomIntInclusive(0, breedsNum-1);
-        var randomBreed = breedsArray[randomNum];
-        console.log("Breed Selected is: " + randomBreed);
-
-        // Display the randomly selected breed in HTML
-        $("#catBreeds").html(randomBreed);
-      }, 'text');
-    </script>
-
-  </body>
+  <script type="text/javascript" src="./assets/javascript/game.js"></script>
+</body>
 </html>
