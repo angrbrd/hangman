@@ -1,0 +1,12 @@
+.jumbotron {
+	background-color: #f96eb4;
+}
+
+.panel {
+	background-color: #d0fde7;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #6ef9b3;
+}

@@ -2,33 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kitty Hangman</title>
+  <title>Kitty Hangman: The Game</title>
 
-  <!-- Added link to the jQuery Library -->
+  <!-- Link to the jQuery Library -->
   <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+   <!-- Link to the Bootstrap Library -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Link to an sdditional CSS File -->
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-  <h1>Welcome to Kitty Hangman!</h1>
-  <hr>
 
-  <h2>Your Guess</h2>
-  <div id="userGuess"></div>
+  <!-- Overall Bootstrap Grid -->
+  <div class="container">
 
-  <h3>Letters Already Guessed</h3>
-  <div id="lettersGuessed"></div>
+    <!-- Jumbotron with Title -->
+    <div class="jumbotron">
 
-  <h3>Number Of Tries Remaining</h3>
-  <div id="triesLeft"></div>
+      <h1 class="text-center"><strong>Welcome to Kitty Hangman!</strong></h1>
+      <h4 class="text-center">Press any key to start the game</h4>
+      <hr>
+      <div class="text-center">
+        <button class="btn btn-warning btn-xs themeButton"><span class="glyphicon glyphicon-music"></span> Play Nyan Cat! </button>
+        <button class="btn btn-default btn-xs pauseButton"><span class="glyphicon glyphicon-pause"></span> Pause Nyan Cat! </button> 
+      </div>
 
-  <h3>Total Wins</h3>
-  <div id="totalWins"></div>
-  <div id="userWinMessage"></div>
+    </div> <!-- End Jumbotron -->
 
-  <h3>Total Losses</h3>
-  <div id="totalLosses"></div>
-  <div id="userLossMessage"></div>
+    <div class="row">
+
+      <!-- Left Panel (Game Statistics) -->
+      <div class="col-lg-6">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Your Guess</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <div id="userGuess"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Letters Already Guessed</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <div id="lettersGuessed"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Number Of Tries Remaining</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <div id="triesLeft"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Total Wins</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <div id="totalWins"></div>
+              <div class="text-success" id="userWinMessage"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Total Losses</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <div id="totalLosses"></div>
+              <div class="text-danger" id="userLossMessage"></div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- Game Statistics -->
+
+      <!-- Right Panel (Cat Image) -->
+      <div class="col-lg-6" id="imageContainer">
+        <img src="https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif" alt="Cat image" id="catImage" style="position:absolute; top:50px; left: 80px; z-index: -20; width: 500px">
+      </div>
+
+    </div> <!-- End row -->
+
+  </div> <!-- End Bootstrap Grid -->
 
   <script type="text/javascript" src="./assets/javascript/game.js"></script>
+
 </body>
 </html>
