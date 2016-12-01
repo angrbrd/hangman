@@ -112,26 +112,26 @@ function Game(list) {
     }
   }
 
-  // Format the current guess in order to display it nicely in HTML
-  this.printGuess = function() {
-    var guess = "";
+  // Format a given list in order to display it nicely in HTML
+  this.printList = function(list) {
+    var myList = "";
 
-    for (var i = 0; i < this.guessList.length; i++) {
-      if (this.guessList[i] !== " ") { // if not a space, insert the character
-        guess += this.guessList[i];
-        guess += " "; // add space so several _ characters do not look like a line
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] !== " ") { // if not a space, insert the character
+        myList += list[i];
+        myList += " "; // add space so several _ characters do not look like a line
       } else { // if space, put | to separate the words
-        guess += "| ";
+        myList += "| ";
       }
     }
 
-    return guess
+    return myList
   }
 
   // Print the game stats such as letters guessed and win/loss numbers
   this.printStats = function() {
-    $("#userGuess").html(this.printGuess());
-    $("#lettersGuessed").html(this.lettersGuessed);
+    $("#userGuess").html(this.printList(this.guessList));
+    $("#lettersGuessed").html(this.printList(this.lettersGuessed));
     $("#triesLeft").html(this.numGuesses);
     $("#totalWins").html(this.totalWins);
     $("#totalLosses").html(this.totalLosses);
@@ -141,12 +141,12 @@ function Game(list) {
   this.checkWin = function() {
     if (arraysEqual(this.guessList, this.breedList) && (this.numGuesses >= 0)) {
       // User has won the game
-      $("#userWinMessage").html("You have guessed " + this.guessList.join('') + " correctly!");
+      $("#userWinMessage").html("<strong>You have guessed " + this.guessList.join('') + " correctly!<strong>");
       this.totalWins ++;
       this.gameOver = true;
     } else if (!arraysEqual(this.guessList, this.breedList) && (this.numGuesses <= 0)) {
       // User has lost the game
-      $("#userLossMessage").html("You did not guess " + this.breedList.join('') + "!");
+      $("#userLossMessage").html("<strong>You did not guess " + this.breedList.join('') + "!<strong>");
       this.totalLosses ++;
       this.gameOver = true;
     } else {
@@ -158,6 +158,19 @@ function Game(list) {
 
 // Run Javascript when the HTML has finished loading
 $(document).ready(function() {
+
+  // Add the Nyan Cat theme song
+  var audioElement = document.createElement("audio");
+  audioElement.setAttribute("src", "./assets/unknown_artist-nyan_cat.mp3");
+
+  // Theme Button
+  $(".themeButton").on("click", function() {
+    audioElement.play();
+  });
+
+  $(".pauseButton").on("click", function() {
+    audioElement.pause();
+  });
 
   // Specify the file containing the cat breeds
   var catBreedFile = "./assets/cat_breeds.txt";
@@ -187,6 +200,7 @@ $(document).ready(function() {
 
     // Check if the game should be restarted at this time
     if (hangman.gameOver == true) {
+      $("#catImage").attr("src", "./assets/images/" + hangman.breed + ".jpg");
       hangman.setupNewGame();
     }
   }); // user keyboard press
