@@ -4,7 +4,7 @@ American Curl
 American Shorthair
 American Wirehair
 Balinese
-Bengal Cats
+Bengal
 Birman
 Bombay
 British Shorthair
@@ -33,12 +33,12 @@ Ocicat
 Oriental
 Persian
 Ragamuffin
-Ragdoll Cats
+Ragdoll
 Russian Blue
 Savannah
 Scottish Fold
 Selkirk Rex
-Siamese Cat
+Siamese
 Siberian
 Singapura
 Snowshoe
